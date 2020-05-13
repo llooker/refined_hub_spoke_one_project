@@ -1,8 +1,13 @@
 connection: "thelook_events_redshift"
 
-# include all the views and explores
+# include all hub view, explores, and layers
 include: "/hub/views/*.view"
 include: "/hub/explores/*lkml"
+
+#include all spoke views, explores, and layers
+include: "views/*.view.lkml"
+include: "explores/*.explore.lkml"
+include: "layers/*.layer.lkml"
 
 datagroup: refined_hub_spoke_one_project_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -10,27 +15,3 @@ datagroup: refined_hub_spoke_one_project_default_datagroup {
 }
 
 persist_with: refined_hub_spoke_one_project_default_datagroup
-
-explore: distribution_centers {
-  extends: [distribution_centers_hub]
-}
-
-explore: events {
-  extends: [events_hub]
-}
-
-explore: inventory_items {
-  extends: [inventory_items_hub]
-}
-
-explore: order_items {
-  extends: [order_items_hub]
-}
-
-explore: products {
-  extends: [products_hub]
-}
-
-explore: users {
-  extends: [users_hub]
-}

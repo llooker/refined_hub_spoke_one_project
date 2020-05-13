@@ -47,6 +47,11 @@ view: order_items {
     sql: ${TABLE}.order_id ;;
   }
 
+  measure: order_count {
+    type: count_distinct
+    sql: ${order_id} ;;
+  }
+
   dimension_group: returned {
     type: time
     timeframes: [
@@ -64,6 +69,11 @@ view: order_items {
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
+  }
+
+  measure: total_revenue {
+    type: sum
+    sql: ${sale_price} ;;
   }
 
   dimension_group: shipped {
