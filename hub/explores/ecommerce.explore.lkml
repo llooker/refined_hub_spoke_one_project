@@ -1,18 +1,9 @@
-connection: "thelook_events_redshift"
-
-# include all the views
-include: "/views/**/*.view"
-
-datagroup: refined_hub_spoke_one_project_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+explore: distribution_centers_hub {
+  extension: required
 }
 
-persist_with: refined_hub_spoke_one_project_default_datagroup
-
-explore: distribution_centers {}
-
-explore: events {
+explore: events_hub {
+  extension: required
   join: users {
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
@@ -20,7 +11,8 @@ explore: events {
   }
 }
 
-explore: inventory_items {
+explore: inventory_items_hub {
+  extension: required
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
@@ -34,7 +26,8 @@ explore: inventory_items {
   }
 }
 
-explore: order_items {
+explore: order_items_hub {
+  extension: required
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
@@ -60,7 +53,8 @@ explore: order_items {
   }
 }
 
-explore: products {
+explore: products_hub {
+  extension: required
   join: distribution_centers {
     type: left_outer
     sql_on: ${products.distribution_center_id} = ${distribution_centers.id} ;;
@@ -68,4 +62,6 @@ explore: products {
   }
 }
 
-explore: users {}
+explore: users_hub {
+  extension: required
+}
