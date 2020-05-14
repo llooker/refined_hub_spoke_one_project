@@ -1,7 +1,5 @@
 connection: "thelook_events_redshift"
 
-include: "/hub/explores/*.lkml"
-
 include: "/customer_success_spoke/views/*.view.lkml"
 include: "/customer_success_spoke/layers/*.layer.lkml"
 include: "/customer_success_spoke/explores/*.explore.lkml"

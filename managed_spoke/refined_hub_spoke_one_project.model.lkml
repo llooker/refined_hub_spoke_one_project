@@ -1,9 +1,5 @@
 connection: "thelook_events_redshift"
 
-# include all hub view, explores, and layers
-include: "/hub/views/*.view"
-include: "/hub/explores/*lkml"
-
 #include all spoke views, explores, and layers
 include: "views/*.view.lkml"
 include: "explores/*.explore.lkml"

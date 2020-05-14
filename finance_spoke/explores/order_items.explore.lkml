@@ -1,10 +1,9 @@
-include: "/hub/explores/ecommerce.explore.lkml"
+include: "/hub/explores/order_items.explore.lkml"
 include: "/finance_spoke/explores/*.explore.lkml"
 include: "/finance_spoke/layers/*.layer.lkml"
 include: "/finance_spoke/views/*.view.lkml"
 
-explore: order_items {
-  extends: [order_items_hub]
+explore: +order_items {
   group_label: "(AJC - One Project) Finance"
 
   join: margins {

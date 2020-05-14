@@ -1,6 +1,5 @@
-include: "/hub/explores/ecommerce.explore.lkml"
+include: "/hub/explores/users.explore.lkml"
 
-explore: users {
-  extends: [users_hub]
+explore: +users {
   group_label: "(AJC - One Project) Managed"
 }
