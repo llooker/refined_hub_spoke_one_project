@@ -74,4 +74,10 @@ view: cs_user_order_ndt {
   }
 }
 
-explore: +order_items {}
+explore: +order_items {
+  join: cs_user_order_ndt {
+    sql_on: ${order_items.user_id} = ${cs_user_order_ndt.user_id};;
+    relationship: many_to_one
+    type: inner
+  }
+}
